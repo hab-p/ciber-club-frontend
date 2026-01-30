@@ -5,21 +5,27 @@ import AboutUs from '@/components/AboutUs';
 import GalleryCarousel from '@/components/GalleryCarousel';
 import ContactForm from '@/components/ContactForm';
 import ReglamentoSection from '@/components/ReglamentoSection';
+import ServiceProposal from '@/components/ServiceProposal';
+import AportantesSection from '@/components/AportantesSection';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-950">
+      <AboutUs />
+
+      <ServiceProposal />
+
       <HeroRanking />
       
       <RecordsSection />
 
-      <AboutUs />
+      <ReglamentoSection />
 
       <InstagramSection />
       
       <GalleryCarousel />
 
-      <ReglamentoSection />
+      <AportantesSection />
 
       <ContactForm />
     </div>

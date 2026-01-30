@@ -16,7 +16,7 @@ export default function HeroRanking() {
         </h1>
 
         {/* Google Sheets Embed */}
-        <div className="w-full flex-grow bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 shadow-2xl overflow-hidden p-2">
+        <div className="w-full flex-grow bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 shadow-2xl overflow-hidden p-8">
           <iframe 
             src="https://docs.google.com/spreadsheets/d/1IbX5JF3-qbteWPpSajpbTiA_3TW6G94S07kQWtlwf-w/preview?widget=true&headers=false"
             className="w-full h-[80vh] rounded-lg"

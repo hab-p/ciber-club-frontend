@@ -8,13 +8,14 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Ranking', href: '/#hero' }, // Mapping Ranking to Hero as requested ranking is in Hero now? Or keeping #ranking? HeroRanking is at top. Let's map Ranking to #hero or #ranking if I wrap Hero in #ranking.
-    // Wait, HeroRanking IS the hero. The user said "En el Hero... Ranking actual...". So clicking Ranking should probably go to top or #hero.
-    // Let's assume #hero for Ranking or create a wrapper.
-    { name: 'Records', href: '/#records' },
-    { name: 'Instagram', href: '/#instagram' },
     { name: 'Nosotros', href: '/#about' },
+    { name: 'Propuesta', href: '/#propuesta-servicio' },
+    { name: 'Ranking', href: '/#hero' },
+    { name: 'Records', href: '/#records' },
+    { name: 'Reglamento', href: '/#reglamento' },
+    { name: 'Instagram', href: '/#instagram' },
     { name: 'Galería', href: '/#galeria' },
+    { name: 'Aportantes', href: '/#aportantes' },
     { name: 'Contacto', href: '/#contacto' },
   ];
 
