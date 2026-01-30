@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ciber-Club",
   description: "Torneos y eventos gaming en ferias",
+  icons: {
+    icon: '/Ciberclub_logo.png',
+  },
 };
 
 export default function RootLayout({

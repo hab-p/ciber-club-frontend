@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,14 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-950 text-white p-4 shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-500 z-50">
+        <Link href="/" className="text-2xl font-bold text-blue-500 z-50 flex items-center gap-3">
+          <Image 
+            src="/Ciberclub_logo.png" 
+            alt="Ciber-Club Logo" 
+            width={50} 
+            height={50} 
+            className="rounded-full object-cover"
+          />
           Ciber-Club
         </Link>
 
