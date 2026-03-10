@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import axios from 'axios';
+import ScrollReveal from './ScrollReveal';
 
 export default function GalleryCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -23,7 +24,7 @@ export default function GalleryCarousel() {
 
   return (
     <section id="galeria" className="py-16 bg-gray-900">
-      <div className="container mx-auto px-4">
+      <ScrollReveal startFrom="left" className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-10 text-white">Galería de Eventos</h2>
         <div className="overflow-hidden rounded-xl shadow-lg border border-gray-700" ref={emblaRef}>
           <div className="flex">
@@ -41,7 +42,7 @@ export default function GalleryCarousel() {
             ))}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

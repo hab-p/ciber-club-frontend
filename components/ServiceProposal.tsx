@@ -1,9 +1,11 @@
 'use client';
 
+import ScrollReveal from './ScrollReveal';
+
 export default function ServiceProposal() {
   return (
     <section id="propuesta-servicio" className="py-20 bg-gray-900 border-t border-gray-800">
-      <div className="container mx-auto px-4">
+      <ScrollReveal startFrom="right" className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-10 text-center text-green-500">
           Propuesta Servicio para Eventos públicos y privados (2026)
         </h2>
@@ -15,7 +17,7 @@ export default function ServiceProposal() {
                title="Propuesta Servicio para Eventos públicos y privados (2026)"
              ></iframe>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

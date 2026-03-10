@@ -1,5 +1,7 @@
 'use client';
 
+import ScrollReveal from './ScrollReveal';
+
 export default function HeroRanking() {
   return (
     <section id="hero" className="relative min-h-[100vh] flex flex-col items-center justify-start bg-gray-900 text-white pt-24 pb-10">
@@ -10,7 +12,7 @@ export default function HeroRanking() {
       ></div>
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900"></div>
 
-      <div className="container mx-auto px-4 z-10 relative flex flex-col h-full flex-grow">
+      <ScrollReveal startFrom="left" className="container mx-auto px-4 z-10 relative flex flex-col h-full flex-grow">
         <h1 className="text-4xl md:text-6xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
           Ranking 2026
         </h1>
@@ -25,7 +27,7 @@ export default function HeroRanking() {
             title="Ranking 2026 Spreadsheet"
           ></iframe>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
