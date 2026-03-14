@@ -19,6 +19,8 @@ export default function RankingPage() {
   const [rankings, setRankings] = useState<Ranking[]>([]);
   const [games, setGames] = useState<string[]>([]);
   const [activeGame, setActiveGame] = useState<string>('');
+  const laCuevaDelHonguitoInstagramUrl = 'https://www.instagram.com/REEMPLAZAR_LA_CUEVA_DEL_HONGUITO/';
+  const leChatNoirInstagramUrl = 'https://www.instagram.com/REEMPLAZAR_LE_CHAT_NOIR/';
 
   useEffect(() => {
     axios.get('http://localhost:4000/ranking')
@@ -50,6 +52,50 @@ export default function RankingPage() {
      <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center text-blue-500">Ranking</h1>
+
+        <div className="mb-10 flex justify-center">
+          <div className="w-full max-w-[720px]">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-white">
+              Premios Tempoarada de Verano 2026
+            </h2>
+
+            <div className="relative w-full">
+              <img
+                src="/Flyer-Premio-Final-Temporada-Verano.jpeg"
+                alt="Flyer Premio Final Temporada Verano"
+                className="w-full h-auto rounded-xl border border-gray-700 shadow-xl"
+              />
+
+              <a
+                href={laCuevaDelHonguitoInstagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram La Cueva del Honguito"
+                title="Ir al Instagram del Sponsor"
+                className="group absolute z-20 block rounded-full cursor-pointer outline-none focus:outline-none focus-visible:outline-none"
+                style={{ top: '2%', left: '54%', width: '30%', height: '30%', transform: 'translate(5%, 10%)', clipPath: 'circle(50% at 50% 50%)' }}
+              >
+                <span className="pointer-events-none absolute left-1/2 top-0 z-30 -translate-x-1/2 -translate-y-[120%] whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white opacity-0 shadow transition-opacity group-hover:opacity-100 group-focus:opacity-100">
+                  Ir al Instagram del Sponsor
+                </span>
+              </a>
+
+              <a
+                href={leChatNoirInstagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram Le Chat Noir"
+                title="Ir al Instagram del Sponsor"
+                className="group absolute z-20 block rounded-full cursor-pointer outline-none focus:outline-none focus-visible:outline-none"
+                style={{ top: '33%', left: '54%', width: '30%', height: '30%', transform: 'translate(5%, 10%)', clipPath: 'circle(50% at 50% 50%)' }}
+              >
+                <span className="pointer-events-none absolute left-1/2 top-0 z-30 -translate-x-1/2 -translate-y-[120%] whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white opacity-0 shadow transition-opacity group-hover:opacity-100 group-focus:opacity-100">
+                  Ir al Instagram del Sponsor
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
         
         {/* Game Tabs */}
         {games.length > 0 ? (

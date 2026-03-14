@@ -27,6 +27,16 @@ export default function Home() {
 
       <AportantesSection />
 
+      <section className="w-full py-14 px-4">
+        <div className="max-w-5xl mx-auto flex justify-center">
+          <img
+            src="/Buscamos-Staff-Ciber-Club.jpeg"
+            alt="Buscamos Staff Ciber-Club"
+            className="w-full max-w-[520px] h-auto rounded-xl border border-gray-700 shadow-xl"
+          />
+        </div>
+      </section>
+
       <ContactForm />
     </div>
   );

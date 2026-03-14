@@ -3,19 +3,51 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
+type RankingType = 'RANKING' | 'ACHIEVEMENT';
+type RankingCategory = 'INDIVIDUAL' | 'GRUPAL';
+
+interface RankingItem {
+  id: number;
+  game: string;
+  season?: string | null;
+  type: RankingType;
+  category?: RankingCategory | null;
+  map?: string | null;
+  name: string;
+  score?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+}
+
+interface EventItem {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  imageUrl?: string | null;
+}
+
+interface RecordItem {
+  id: number;
+  gameName: string;
+  playerName: string;
+  score: string;
+  date: string;
+  imageUrl?: string | null;
+}
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'events' | 'records' | 'rankings'>('events');
-  const [token, setToken] = useState('');
+  const [token] = useState<string | null>(() =>
+    typeof window === 'undefined' ? null : localStorage.getItem('token')
+  );
 
   useEffect(() => {
-    const t = localStorage.getItem('token');
-    if (!t) {
+    if (!token) {
       router.push('/ciberadmin');
-    } else {
-      setToken(t);
     }
-  }, [router]);
+  }, [router, token]);
 
   if (!token) return null;
 
@@ -69,13 +101,13 @@ export default function AdminDashboard() {
 }
 
 function RankingManager({ token }: { token: string }) {
-  const [rankings, setRankings] = useState<any[]>([]);
+  const [rankings, setRankings] = useState<RankingItem[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [form, setForm] = useState({
     game: '',
     season: '',
-    type: 'RANKING', // RANKING | ACHIEVEMENT
-    category: 'INDIVIDUAL', // INDIVIDUAL | GRUPAL
+    type: 'RANKING' as RankingType,
+    category: 'INDIVIDUAL' as RankingCategory,
     map: '',
     name: '',
     score: '',
@@ -85,7 +117,7 @@ function RankingManager({ token }: { token: string }) {
   const [file, setFile] = useState<File | null>(null);
 
   const fetchRankings = () => {
-    axios.get('http://localhost:4000/ranking').then(res => setRankings(res.data));
+    axios.get<RankingItem[]>('http://localhost:4000/ranking').then((res) => setRankings(res.data));
   };
 
   useEffect(fetchRankings, []);
@@ -97,13 +129,13 @@ function RankingManager({ token }: { token: string }) {
       if (file) {
         const formData = new FormData();
         formData.append('file', file);
-        const res = await axios.post('http://localhost:4000/upload', formData);
+        const res = await axios.post<{ url: string }>('http://localhost:4000/upload', formData);
         imageUrl = res.data.url;
       }
 
       const dataToSubmit = { ...form, imageUrl };
 
-      if (editingId) {
+      if (editingId !== null) {
         await axios.patch(`http://localhost:4000/ranking/${editingId}`, dataToSubmit, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -116,7 +148,7 @@ function RankingManager({ token }: { token: string }) {
       fetchRankings();
       setForm({ ...form, name: '', score: '', description: '', imageUrl: '' }); 
       setFile(null);
-    } catch (err) {
+    } catch {
       alert('Error al guardar ranking');
     }
   };
@@ -128,12 +160,12 @@ function RankingManager({ token }: { token: string }) {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchRankings();
-    } catch (err) {
+    } catch {
       alert('Error al eliminar');
     }
   };
 
-  const handleEdit = (ranking: any) => {
+  const handleEdit = (ranking: RankingItem) => {
     setForm({
       game: ranking.game,
       season: ranking.season || '',
@@ -184,7 +216,7 @@ function RankingManager({ token }: { token: string }) {
             <select 
               className="w-full p-2 rounded bg-gray-600 text-white border border-gray-500"
               value={form.type}
-              onChange={e => setForm({...form, type: e.target.value})}
+              onChange={(e) => setForm({ ...form, type: e.target.value as RankingType })}
             >
               <option value="RANKING">Ranking Competitivo</option>
               <option value="ACHIEVEMENT">Logro / Misión</option>
@@ -198,7 +230,7 @@ function RankingManager({ token }: { token: string }) {
                 <select 
                   className="w-full p-2 rounded bg-gray-600 text-white border border-gray-500"
                   value={form.category}
-                  onChange={e => setForm({...form, category: e.target.value})}
+                  onChange={(e) => setForm({ ...form, category: e.target.value as RankingCategory })}
                 >
                   <option value="INDIVIDUAL">Individual</option>
                   <option value="GRUPAL">Grupal</option>
@@ -347,13 +379,13 @@ function RankingManager({ token }: { token: string }) {
 }
 
 function EventsManager({ token }: { token: string }) {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [form, setForm] = useState({ title: '', description: '', date: '', imageUrl: '' });
   const [file, setFile] = useState<File | null>(null);
 
   const fetchEvents = () => {
-    axios.get('http://localhost:4000/events').then(res => setEvents(res.data));
+    axios.get<EventItem[]>('http://localhost:4000/events').then((res) => setEvents(res.data));
   };
 
   useEffect(fetchEvents, []);
@@ -365,13 +397,13 @@ function EventsManager({ token }: { token: string }) {
       if (file) {
         const formData = new FormData();
         formData.append('file', file);
-        const res = await axios.post('http://localhost:4000/upload', formData);
+        const res = await axios.post<{ url: string }>('http://localhost:4000/upload', formData);
         imageUrl = res.data.url;
       }
 
       const dataToSubmit = { ...form, imageUrl };
 
-      if (editingId) {
+      if (editingId !== null) {
         await axios.patch(`http://localhost:4000/events/${editingId}`, dataToSubmit, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -384,7 +416,7 @@ function EventsManager({ token }: { token: string }) {
       fetchEvents();
       setForm({ title: '', description: '', date: '', imageUrl: '' });
       setFile(null);
-    } catch (err) {
+    } catch {
       alert('Error al guardar evento');
     }
   };
@@ -396,12 +428,12 @@ function EventsManager({ token }: { token: string }) {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchEvents();
-    } catch (err) {
+    } catch {
       alert('Error al eliminar');
     }
   };
 
-  const handleEdit = (event: any) => {
+  const handleEdit = (event: EventItem) => {
     const date = new Date(event.date);
     const offset = date.getTimezoneOffset();
     const localDate = new Date(date.getTime() - (offset * 60 * 1000));
@@ -504,13 +536,13 @@ function EventsManager({ token }: { token: string }) {
 }
 
 function RecordsManager({ token }: { token: string }) {
-  const [records, setRecords] = useState<any[]>([]);
+  const [records, setRecords] = useState<RecordItem[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [form, setForm] = useState({ gameName: '', playerName: '', score: '', date: '', imageUrl: '' });
   const [file, setFile] = useState<File | null>(null);
 
   const fetchRecords = () => {
-    axios.get('http://localhost:4000/records').then(res => setRecords(res.data));
+    axios.get<RecordItem[]>('http://localhost:4000/records').then((res) => setRecords(res.data));
   };
 
   useEffect(fetchRecords, []);
@@ -522,13 +554,13 @@ function RecordsManager({ token }: { token: string }) {
       if (file) {
         const formData = new FormData();
         formData.append('file', file);
-        const res = await axios.post('http://localhost:4000/upload', formData);
+        const res = await axios.post<{ url: string }>('http://localhost:4000/upload', formData);
         imageUrl = res.data.url;
       }
 
       const dataToSubmit = { ...form, imageUrl };
 
-      if (editingId) {
+      if (editingId !== null) {
         await axios.patch(`http://localhost:4000/records/${editingId}`, dataToSubmit, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -541,7 +573,7 @@ function RecordsManager({ token }: { token: string }) {
       fetchRecords();
       setForm({ gameName: '', playerName: '', score: '', date: '', imageUrl: '' });
       setFile(null);
-    } catch (err) {
+    } catch {
       alert('Error al guardar récord');
     }
   };
@@ -553,12 +585,12 @@ function RecordsManager({ token }: { token: string }) {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchRecords();
-    } catch (err) {
+    } catch {
       alert('Error al eliminar');
     }
   };
 
-  const handleEdit = (record: any) => {
+  const handleEdit = (record: RecordItem) => {
     const date = new Date(record.date);
     const offset = date.getTimezoneOffset();
     const localDate = new Date(date.getTime() - (offset * 60 * 1000));
