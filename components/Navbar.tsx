@@ -80,7 +80,7 @@ export default function Navbar() {
               key={group.name}
               className="relative"
               onMouseEnter={() => setOpenDropdown(group.name)}
-              onMouseLeave={() => setOpenDropdown((curr) => (curr === group.name ? null : curr))}
+              onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
                 type="button"
@@ -94,34 +94,39 @@ export default function Navbar() {
 
               {openDropdown === group.name ? (
                 <div
-                  className="absolute left-0 mt-3 min-w-56 rounded-xl border border-gray-700 bg-gray-950/95 shadow-xl backdrop-blur p-2"
-                  role="menu"
+                  className="absolute left-0 top-full pt-3 z-50"
+                  role="presentation"
                 >
-                  {group.items.map((item) =>
-                    item.external ? (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
-                        role="menuitem"
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {item.name}
-                      </a>
-                    ) : (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
-                        role="menuitem"
-                        onClick={() => setOpenDropdown(null)}
-                      >
-                        {item.name}
-                      </Link>
-                    )
-                  )}
+                  <div
+                    className="min-w-56 rounded-xl border border-gray-700 bg-gray-950/95 shadow-xl backdrop-blur p-2"
+                    role="menu"
+                  >
+                    {group.items.map((item) =>
+                      item.external ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                          role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                          role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    )}
+                  </div>
                 </div>
               ) : null}
             </div>
