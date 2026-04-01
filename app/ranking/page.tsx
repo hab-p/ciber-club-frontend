@@ -53,7 +53,7 @@ export default function RankingPage() {
       <div className="container mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center text-blue-500">Ranking</h1>
 
-        <div className="mb-10 flex justify-center">
+        <div className="hidden mb-10 flex justify-center">
           <div className="w-full max-w-[720px]">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-white">
               Premios Tempoarada de Verano 2026

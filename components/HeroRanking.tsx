@@ -31,7 +31,7 @@ export default function HeroRanking() {
           ></iframe>
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="hidden mt-10 flex justify-center">
           <div className="w-full max-w-[720px]">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-white">
               Premios Temporada de Verano 2026
