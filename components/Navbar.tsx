@@ -33,8 +33,8 @@ export default function Navbar() {
     {
       name: 'Competencias',
       items: [
-        { name: 'Ranking', href: '/ranking' },
-        { name: 'Records', href: '/records' },
+        { name: 'Ranking 2026', href: '/#hero' },
+        { name: 'Records Históricos', href: '/#records' },
       ],
     },
     {
