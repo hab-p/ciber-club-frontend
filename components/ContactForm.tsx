@@ -39,7 +39,7 @@ export default function ContactForm() {
             <label className="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
             <input
               type="text"
-              name="user_name" // Name attribute for EmailJS template variable
+              name="from_name"
               required
               className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-700 text-white"
             />
@@ -47,8 +47,9 @@ export default function ContactForm() {
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">Teléfono</label>
             <input
-              type="tel"
-              name="user_phone" // Name attribute for EmailJS
+              type="text"
+              name="phone"
+              required
               className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-700 text-white"
             />
           </div>
@@ -56,7 +57,7 @@ export default function ContactForm() {
             <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
             <input
               type="email"
-              name="user_email" // Name attribute for EmailJS
+              name="email_id"
               required
               className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-gray-700 text-white"
             />
