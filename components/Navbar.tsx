@@ -3,22 +3,61 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+type NavItem = {
+  name: string;
+  href: string;
+  external?: boolean;
+};
+
+type NavGroup = {
+  name: string;
+  items: NavItem[];
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openMobileGroups, setOpenMobileGroups] = useState<Record<string, boolean>>({});
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const navLinks = [
-    { name: 'Nosotros', href: '/#about' },
-    { name: 'Propuesta', href: '/#propuesta-servicio' },
-    { name: 'Ranking', href: '/#hero' },
-    { name: 'Records', href: '/#records' },
-    { name: 'Reglamento', href: '/#reglamento' },
-    { name: 'Instagram', href: '/#instagram' },
-    { name: 'Galería', href: '/#galeria' },
-    { name: 'Aportantes', href: '/#aportantes' },
-    { name: 'Contacto', href: '/#contacto' },
+  const navGroups: NavGroup[] = [
+    {
+      name: 'Institucional',
+      items: [
+        { name: 'Nosotros', href: '/#about' },
+        { name: 'Propuesta', href: '/#propuesta-servicio' },
+        { name: 'Reglamento', href: '/#reglamento' },
+      ],
+    },
+    {
+      name: 'Competencias',
+      items: [
+        { name: 'Ranking', href: '/ranking' },
+        { name: 'Records', href: '/records' },
+      ],
+    },
+    {
+      name: 'Comunidad',
+      items: [
+        { name: 'Instagram', href: '/#instagram' },
+        { name: 'Galería', href: '/galeria' },
+        { name: 'Discord', href: 'https://discord.com/invite/FnrFfXVR7d', external: true },
+      ],
+    },
+    {
+      name: 'Soporte / Contacto',
+      items: [
+        { name: 'Aportantes', href: '/#aportantes' },
+        { name: 'Contacto', href: '/#contacto' },
+      ],
+    },
   ];
+
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setOpenMobileGroups({});
+  };
 
   return (
     <nav className="bg-gray-950 text-white p-4 shadow-md sticky top-0 z-50">
@@ -35,20 +74,58 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="hover:text-blue-400 transition">
-              {link.name}
-            </Link>
+        <div className="hidden md:flex gap-8 items-center">
+          {navGroups.map((group) => (
+            <div
+              key={group.name}
+              className="relative"
+              onMouseEnter={() => setOpenDropdown(group.name)}
+              onMouseLeave={() => setOpenDropdown((curr) => (curr === group.name ? null : curr))}
+            >
+              <button
+                type="button"
+                className="font-bold hover:text-blue-400 transition"
+                aria-haspopup="menu"
+                aria-expanded={openDropdown === group.name}
+                onClick={() => setOpenDropdown((curr) => (curr === group.name ? null : group.name))}
+              >
+                {group.name}
+              </button>
+
+              {openDropdown === group.name ? (
+                <div
+                  className="absolute left-0 mt-3 min-w-56 rounded-xl border border-gray-700 bg-gray-950/95 shadow-xl backdrop-blur p-2"
+                  role="menu"
+                >
+                  {group.items.map((item) =>
+                    item.external ? (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                        role="menuitem"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                        role="menuitem"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  )}
+                </div>
+              ) : null}
+            </div>
           ))}
-          <a 
-            href="https://discord.com/invite/FnrFfXVR7d" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="hover:text-blue-400 transition"
-          >
-            Discord
-          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -65,26 +142,64 @@ export default function Navbar() {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-gray-950 flex flex-col items-center justify-center gap-8 transition-transform duration-300 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href} 
-              className="text-2xl hover:text-blue-400 transition"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <a 
-            href="https://discord.com/invite/FnrFfXVR7d" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-2xl hover:text-blue-400 transition"
-            onClick={() => setIsOpen(false)}
-          >
-            Discord
-          </a>
+        <div
+          className={`fixed inset-0 bg-gray-950 transition-transform duration-300 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          aria-hidden={!isOpen}
+        >
+          <div className="h-full w-full flex flex-col items-center justify-center px-6">
+            <div className="w-full max-w-sm space-y-3">
+              {navGroups.map((group) => {
+                const isGroupOpen = Boolean(openMobileGroups[group.name]);
+
+                return (
+                  <div key={group.name} className="rounded-xl border border-gray-800 bg-gray-900/40">
+                    <button
+                      type="button"
+                      className="w-full flex items-center justify-between px-4 py-3 font-bold text-left hover:text-blue-300 transition"
+                      aria-expanded={isGroupOpen}
+                      onClick={() =>
+                        setOpenMobileGroups((curr) => ({
+                          ...curr,
+                          [group.name]: !Boolean(curr[group.name]),
+                        }))
+                      }
+                    >
+                      <span>{group.name}</span>
+                      <span className={`transition-transform ${isGroupOpen ? 'rotate-180' : ''}`}>▾</span>
+                    </button>
+
+                    {isGroupOpen ? (
+                      <div className="px-2 pb-3">
+                        {group.items.map((item) =>
+                          item.external ? (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block rounded-lg px-3 py-2 text-base text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                              onClick={closeMobileMenu}
+                            >
+                              {item.name}
+                            </a>
+                          ) : (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="block rounded-lg px-3 py-2 text-base text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                              onClick={closeMobileMenu}
+                            >
+                              {item.name}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </nav>
