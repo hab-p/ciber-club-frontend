@@ -12,7 +12,7 @@ export default function ServiceProposal() {
         
         <div className="w-full bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden p-8 flex justify-center">
              <iframe 
-               src="https://drive.google.com/file/d/145aXutaU3K6DY6dPjlVKj0HXqkX_ujX8/preview" 
+               src="https://drive.google.com/file/d/1w-8FG5T-XDrYjP6IzK1b8KzDYJ18Qoe0/preview" 
                className="w-full h-[800px] rounded-lg"
                title="Propuesta Servicio para Eventos públicos y privados (2026)"
              ></iframe>
