@@ -7,6 +7,7 @@ import ContactForm from '@/components/ContactForm';
 import ReglamentoSection from '@/components/ReglamentoSection';
 import ServiceProposal from '@/components/ServiceProposal';
 import AportantesSection from '@/components/AportantesSection';
+import HoverTooltipImage from '@/components/HoverTooltipImage';
 
 export default function Home() {
   return (
@@ -14,6 +15,18 @@ export default function Home() {
       <AboutUs />
 
       <ServiceProposal />
+
+      <section className="w-full py-14 px-4 bg-gray-900 border-t border-gray-800">
+        <div className="max-w-5xl mx-auto flex justify-center">
+          <HoverTooltipImage
+            href="https://drive.google.com/file/d/1CKUNEWJxLzcVxyZTFhZfOmvhPuP4Psbx/view"
+            src="/imagen-del-libro-de-ciber-club.jpeg"
+            alt="Resumen del libro de Ciber-Club"
+            tooltip="Clickea para ver el RESUMEN del Libro"
+            className="max-w-[800px]"
+          />
+        </div>
+      </section>
 
       <HeroRanking />
       
