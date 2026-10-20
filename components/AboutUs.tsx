@@ -19,6 +19,7 @@ export default function AboutUs() {
           <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
              Si querés hacer amigos, formar un clan o colaborar con nuestra organización social, ¡este es tu lugar!
           </p>
+          <br />
           <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
              Fomentamos la cultura geek-gamer, construimos comunidad, impulsamos la Liga Gamer, recuperamos hardware en desuso para uso social y celebramos la emoción de las LAN parties en cada fecha.
           </p>
