@@ -7,11 +7,17 @@ import ContactForm from '@/components/ContactForm';
 import ReglamentoSection from '@/components/ReglamentoSection';
 import ServiceProposal from '@/components/ServiceProposal';
 import AportantesSection from '@/components/AportantesSection';
+import AnniversarySection from '@/components/AnniversarySection';
+import SpreadsheetSection from '@/components/SpreadsheetSection';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-950">
       <AboutUs />
+
+      <AnniversarySection />
+
+      <SpreadsheetSection />
 
       <ServiceProposal />
 
