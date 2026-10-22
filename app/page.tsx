@@ -3,12 +3,13 @@ import RecordsSection from '@/components/RecordsSection';
 import InstagramSection from '@/components/InstagramSection';
 import AboutUs from '@/components/AboutUs';
 import GalleryCarousel from '@/components/GalleryCarousel';
-import ContactForm from '@/components/ContactForm';
+import Contact from '@/components/Contact';
 import ReglamentoSection from '@/components/ReglamentoSection';
 import ServiceProposal from '@/components/ServiceProposal';
 import AportantesSection from '@/components/AportantesSection';
 import AnniversarySection from '@/components/AnniversarySection';
 import SpreadsheetSection from '@/components/SpreadsheetSection';
+import BaseAndConditions from '@/components/BaseAndConditions';
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
       <AboutUs />
 
       <AnniversarySection />
+
+      <BaseAndConditions />
 
       <SpreadsheetSection />
 
@@ -43,7 +46,9 @@ export default function Home() {
         </div>
       </section>
 
-      <ContactForm />
+      <Contact />
+      
     </div>
+    
   );
 }

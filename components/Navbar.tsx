@@ -49,7 +49,7 @@ export default function Navbar() {
       name: 'Soporte / Contacto',
       items: [
         { name: 'Aportantes', href: '/#aportantes' },
-        { name: 'Contacto', href: '/#contacto' },
+        { name: 'Contacto', href: '/#contact' },
       ],
     },
   ];
