@@ -9,7 +9,7 @@ export default function Contact() {
       <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
         <NeonPanel label="Contacto">
           <p className="mb-5 max-w-xl text-sm text-slate-300 md:text-base">
-            Escribinos para eventos, la liga o para sumarte al staff.
+            Escribinos para eventos, la liga, si queres donar o para sumarte al staff.
           </p>
           <div className="mb-6 space-y-2 text-slate-200">
             <p>
