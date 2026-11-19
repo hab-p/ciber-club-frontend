@@ -1,54 +1,60 @@
+import AboutUs from '@/components/AboutUs';
+import AnniversarySection from '@/components/AnniversarySection';
+import BaseAndConditions from '@/components/BaseAndConditions';
+import SpreadsheetSection from '@/components/SpreadsheetSection';
+import ServiceProposal from '@/components/ServiceProposal';
 import HeroRanking from '@/components/HeroRanking';
 import RecordsSection from '@/components/RecordsSection';
-import InstagramSection from '@/components/InstagramSection';
-import AboutUs from '@/components/AboutUs';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import Contact from '@/components/Contact';
 import ReglamentoSection from '@/components/ReglamentoSection';
-import ServiceProposal from '@/components/ServiceProposal';
+import InstagramSection from '@/components/InstagramSection';
+import GalleryCarousel from '@/components/GalleryCarousel';
 import AportantesSection from '@/components/AportantesSection';
-import AnniversarySection from '@/components/AnniversarySection';
-import SpreadsheetSection from '@/components/SpreadsheetSection';
-import BaseAndConditions from '@/components/BaseAndConditions';
+import Contact from '@/components/Contact';
+import NeonPanel from '@/components/NeonPanel';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-950">
+    <div className="flex min-h-screen flex-col bg-[#070614]">
       <AboutUs />
-
       <AnniversarySection />
-
       <BaseAndConditions />
-
       <SpreadsheetSection />
-
       <ServiceProposal />
-
       <HeroRanking />
-      
       <RecordsSection />
-
       <ReglamentoSection />
 
-      <InstagramSection />
-      
-      <GalleryCarousel />
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap gap-3 px-4 py-4 md:px-8">
+        <a href="/galeria" className="btn-neon-ghost">
+          Ver galería
+        </a>
+        <a
+          href="https://www.instagram.com/retrociberclub/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-neon-ghost"
+        >
+          Seguir en Instagram
+        </a>
+      </div>
 
+      <InstagramSection />
+      <GalleryCarousel />
       <AportantesSection />
 
-      <section className="w-full py-14 px-4">
-        <div className="max-w-5xl mx-auto flex justify-center">
-          <img
-            src="/Buscamos-Staff-Ciber-Club.jpeg"
-            alt="Buscamos Staff Ciber-Club"
-            className="w-full max-w-[520px] h-auto rounded-xl border border-gray-700 shadow-xl"
-          />
+      <section className="w-full px-4 py-3 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <NeonPanel label="Buscamos staff">
+            <img
+              src="/Buscamos-Staff-Ciber-Club.jpeg"
+              alt="Buscamos staff Ciber-Club"
+              className="mx-auto h-auto w-full max-w-md rounded-xl"
+            />
+          </NeonPanel>
         </div>
       </section>
 
       <Contact />
-      
     </div>
-    
   );
 }

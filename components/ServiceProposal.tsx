@@ -1,22 +1,19 @@
 'use client';
 
 import ScrollReveal from './ScrollReveal';
+import NeonPanel from './NeonPanel';
 
 export default function ServiceProposal() {
   return (
-    <section id="propuesta-servicio" className="py-20 bg-gray-900 border-t border-gray-800">
-      <ScrollReveal startFrom="right" className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-10 text-center text-green-500">
-          Propuesta Servicio para Eventos públicos y privados (2026)
-        </h2>
-        
-        <div className="w-full bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden p-8 flex justify-center">
-             <iframe 
-               src="https://drive.google.com/file/d/1QX_-SPN0Sn2sKDnhDs0V4dRC3zjRzX_e/preview" 
-               className="w-full h-[800px] rounded-lg"
-               title="Propuesta Servicio para Eventos públicos y privados (2026)"
-             ></iframe>
-        </div>
+    <section id="propuesta-servicio" className="w-full px-4 py-3 md:px-8">
+      <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
+        <NeonPanel label="Propuesta de servicio 2026">
+          <iframe
+            src="https://drive.google.com/file/d/1QX_-SPN0Sn2sKDnhDs0V4dRC3zjRzX_e/preview"
+            className="neon-frame h-[760px]"
+            title="Propuesta de servicio para eventos públicos y privados 2026"
+          />
+        </NeonPanel>
       </ScrollReveal>
     </section>
   );

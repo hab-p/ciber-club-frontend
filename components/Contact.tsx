@@ -1,36 +1,40 @@
 'use client';
 
 import ScrollReveal from './ScrollReveal';
+import NeonPanel from './NeonPanel';
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full py-14 px-4 bg-gray-950">
-      <ScrollReveal startFrom="left" className="max-w-3xl mx-auto flex flex-col items-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-500">
-          Contacto
-        </h2>
-        <div className="w-full bg-gray-800 rounded-xl shadow-lg border border-gray-700 overflow-hidden p-8 space-y-4 text-center">
-          <p className="text-lg text-gray-200">
-            <span className="font-semibold text-blue-400">Mail:</span> ciberclubcoop@gmail.com
+    <section id="contact" className="w-full px-4 py-3 pb-16 md:px-8">
+      <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
+        <NeonPanel label="Contacto">
+          <p className="mb-5 max-w-xl text-sm text-slate-300 md:text-base">
+            Escribinos para eventos, la liga o para sumarte al staff.
           </p>
-          <p className="text-lg text-gray-200">
-            <span className="font-semibold text-pink-400">Instagram:</span> @retrociberclub
-          </p>
-          <p className="text-lg text-gray-200">
-            <span className="font-semibold text-indigo-400">Discord:</span>{' '}
-            <a
-              href="https://discord.gg/FnrFfXVR7d"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-indigo-300"
-            >
-              https://discord.gg/FnrFfXVR7d
-            </a>
-          </p>
-        </div>
+          <div className="mb-6 space-y-2 text-slate-200">
+            <p>
+              <span className="text-cyan-300">Mail:</span> ciberclubcoop@gmail.com
+            </p>
+            <p>
+              <span className="text-fuchsia-300">Instagram:</span> @retrociberclub
+            </p>
+            <p>
+              <span className="text-cyan-300">Discord:</span>{' '}
+              <a
+                href="https://discord.gg/FnrFfXVR7d"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-cyan-400/50 hover:text-cyan-200"
+              >
+                https://discord.gg/FnrFfXVR7d
+              </a>
+            </p>
+          </div>
+          <a href="mailto:ciberclubcoop@gmail.com" className="btn-neon">
+            Escribir
+          </a>
+        </NeonPanel>
       </ScrollReveal>
     </section>
   );
 }
-
-

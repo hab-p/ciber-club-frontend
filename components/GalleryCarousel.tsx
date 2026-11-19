@@ -1,47 +1,33 @@
 'use client';
-import React, { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import axios from 'axios';
+
 import ScrollReveal from './ScrollReveal';
+import NeonPanel from './NeonPanel';
+
+const images = Array.from({ length: 8 }).map((_, i) => ({
+  id: i,
+  url: `/gallery-0${i + 1}.png`,
+}));
 
 export default function GalleryCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  // Local gallery images from public folder
-  const images = Array.from({ length: 8 }).map((_, i) => ({
-      id: i,
-      url: `/gallery-0${i + 1}.png`
-  }));
-
-  // Auto-play
-  useEffect(() => {
-    if (emblaApi) {
-      const interval = setInterval(() => {
-        emblaApi.scrollNext();
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [emblaApi]);
-
   return (
-    <section id="galeria" className="py-16 bg-gray-900">
-      <ScrollReveal startFrom="left" className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10 text-white">Galería de Eventos</h2>
-        <div className="overflow-hidden rounded-xl shadow-lg border border-gray-700" ref={emblaRef}>
-          <div className="flex">
+    <section id="galeria" className="w-full px-4 py-3 md:px-8">
+      <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
+        <NeonPanel label="Galería de eventos">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {images.map((img) => (
-              <div key={img.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] min-w-0 pl-4">
-                 <div className="relative h-[500px] bg-gray-700 rounded-lg overflow-hidden">
-                    {/* Use standard img tag for external placeholders to avoid Next.js Image config issues for now */}
-                    <img 
-                        src={img.url} 
-                        alt={`Gallery ${img.id}`} 
-                        className="w-full h-full object-cover"
-                    />
-                 </div>
+              <div
+                key={img.id}
+                className="aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 p-[2px]"
+              >
+                <img
+                  src={img.url}
+                  alt={`Evento ${img.id + 1}`}
+                  className="h-full w-full rounded-[10px] object-cover"
+                />
               </div>
             ))}
           </div>
-        </div>
+        </NeonPanel>
       </ScrollReveal>
     </section>
   );

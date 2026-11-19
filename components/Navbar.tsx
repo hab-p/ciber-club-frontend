@@ -60,9 +60,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-950 text-white p-4 shadow-md sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 border-b border-white/5 bg-[#070614]/90 p-4 text-white backdrop-blur-md">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-500 z-50 flex items-center gap-3">
+        <Link href="/" className="z-50 flex items-center gap-3 text-lg font-bold tracking-[0.14em] text-cyan-300">
           <Image 
             src="/Ciberclub_logo.png" 
             alt="Ciber-Club Logo" 
@@ -84,7 +84,7 @@ export default function Navbar() {
             >
               <button
                 type="button"
-                className="font-bold hover:text-blue-400 transition"
+                className="text-xs font-bold tracking-[0.14em] uppercase text-slate-200 transition hover:text-cyan-300"
                 aria-haspopup="menu"
                 aria-expanded={openDropdown === group.name}
                 onClick={() => setOpenDropdown((curr) => (curr === group.name ? null : group.name))}
@@ -98,7 +98,7 @@ export default function Navbar() {
                   role="presentation"
                 >
                   <div
-                    className="min-w-56 rounded-xl border border-gray-700 bg-gray-950/95 shadow-xl backdrop-blur p-2"
+                    className="min-w-56 rounded-xl border border-violet-400/30 bg-[#100c22]/95 p-2 shadow-xl backdrop-blur"
                     role="menu"
                   >
                     {group.items.map((item) =>
@@ -108,7 +108,7 @@ export default function Navbar() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                          className="block rounded-lg px-3 py-2 text-sm text-slate-100 transition hover:bg-white/5 hover:text-cyan-300"
                           role="menuitem"
                           onClick={() => setOpenDropdown(null)}
                         >
@@ -118,7 +118,7 @@ export default function Navbar() {
                         <Link
                           key={item.name}
                           href={item.href}
-                          className="block rounded-lg px-3 py-2 text-sm text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                          className="block rounded-lg px-3 py-2 text-sm text-slate-100 transition hover:bg-white/5 hover:text-cyan-300"
                           role="menuitem"
                           onClick={() => setOpenDropdown(null)}
                         >
@@ -148,7 +148,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Overlay */}
         <div
-          className={`fixed inset-0 bg-gray-950 transition-transform duration-300 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`fixed inset-0 bg-[#070614] transition-transform duration-300 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
           aria-hidden={!isOpen}
         >
           <div className="h-full w-full flex flex-col items-center justify-center px-6">
@@ -157,10 +157,10 @@ export default function Navbar() {
                 const isGroupOpen = Boolean(openMobileGroups[group.name]);
 
                 return (
-                  <div key={group.name} className="rounded-xl border border-gray-800 bg-gray-900/40">
+                  <div key={group.name} className="rounded-xl border border-violet-400/25 bg-[#120e28]/80">
                     <button
                       type="button"
-                      className="w-full flex items-center justify-between px-4 py-3 font-bold text-left hover:text-blue-300 transition"
+                      className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-bold tracking-[0.12em] uppercase transition hover:text-cyan-300"
                       aria-expanded={isGroupOpen}
                       onClick={() =>
                         setOpenMobileGroups((curr) => ({
@@ -182,7 +182,7 @@ export default function Navbar() {
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block rounded-lg px-3 py-2 text-base text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                              className="block rounded-lg px-3 py-2 text-base text-slate-100 transition hover:bg-white/5 hover:text-cyan-300"
                               onClick={closeMobileMenu}
                             >
                               {item.name}
@@ -191,7 +191,7 @@ export default function Navbar() {
                             <Link
                               key={item.name}
                               href={item.href}
-                              className="block rounded-lg px-3 py-2 text-base text-gray-100 hover:bg-gray-800 hover:text-blue-300 transition"
+                              className="block rounded-lg px-3 py-2 text-base text-slate-100 transition hover:bg-white/5 hover:text-cyan-300"
                               onClick={closeMobileMenu}
                             >
                               {item.name}
