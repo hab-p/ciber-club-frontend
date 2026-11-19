@@ -10,7 +10,7 @@ const images = Array.from({ length: 8 }).map((_, i) => ({
 
 export default function GalleryCarousel() {
   return (
-    <section id="galeria" className="w-full px-4 py-3 md:px-8">
+    <section id="galeria" className="w-full px-4 py-3 md:px-8 animate-slide-in-right">
       <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
         <NeonPanel label="Galería de eventos">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">

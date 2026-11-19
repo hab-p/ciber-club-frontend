@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function RecordsSection() {
   return (
-    <section id="records" className="w-full px-4 py-3 md:px-8">
+    <section id="records" className="w-full px-4 py-3 md:px-8 animate-slide-in-left">
       <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
         <NeonPanel label="Récords históricos">
           <iframe

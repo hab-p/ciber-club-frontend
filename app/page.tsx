@@ -5,7 +5,7 @@ import SpreadsheetSection from '@/components/SpreadsheetSection';
 import ServiceProposal from '@/components/ServiceProposal';
 import HeroRanking from '@/components/HeroRanking';
 import RecordsSection from '@/components/RecordsSection';
-import ReglamentoSection from '@/components/ReglamentoSection';
+import ReglamentoSection from '@/components/ReglamentSection';
 import InstagramSection from '@/components/InstagramSection';
 import GalleryCarousel from '@/components/GalleryCarousel';
 import AportantesSection from '@/components/AportantesSection';
@@ -42,7 +42,7 @@ export default function Home() {
       <GalleryCarousel />
       <AportantesSection />
 
-      <section className="w-full px-4 py-3 md:px-8">
+      <section className="w-full px-4 py-3 md:px-8 animate-slide-in-left">
         <div className="mx-auto max-w-6xl">
           <NeonPanel label="Buscamos staff">
             <img

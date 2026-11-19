@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full px-4 py-3 pb-16 md:px-8">
+    <section id="contact" className="w-full px-4 py-3 pb-16 md:px-8 animate-slide-in-right">
       <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
         <NeonPanel label="Contacto">
           <p className="mb-5 max-w-xl text-sm text-slate-300 md:text-base">

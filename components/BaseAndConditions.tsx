@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function BaseAndConditions() {
   return (
-    <section className="w-full px-4 py-3 md:px-8">
+    <section className="w-full px-4 py-3 md:px-8 animate-slide-in-left">
       <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
         <NeonPanel label="Bases y condiciones del sorteo">
           <iframe

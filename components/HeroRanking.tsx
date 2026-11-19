@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function HeroRanking() {
   return (
-    <section id="hero" className="w-full px-4 py-3 md:px-8">
+    <section id="hero" className="w-full px-4 py-3 md:px-8 animate-slide-in-right">
       <ScrollReveal startFrom="left" className="mx-auto max-w-6xl">
         <NeonPanel label="Ranking 2026">
           <iframe

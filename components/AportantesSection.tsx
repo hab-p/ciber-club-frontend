@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function AportantesSection() {
   return (
-    <section id="aportantes" className="w-full px-4 py-3 md:px-8">
+    <section id="aportantes" className="w-full px-4 py-3 md:px-8 animate-slide-in-left">
       <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
         <NeonPanel label="Aportantes 2026">
           <iframe

@@ -16,7 +16,11 @@
 
 body {
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgba(88, 28, 135, 0.28), transparent 60%),
+    radial-gradient(
+      1200px 500px at 50% -10%,
+      rgba(88, 28, 135, 0.28),
+      transparent 60%
+    ),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
@@ -81,7 +85,9 @@ body {
   letter-spacing: 0.02em;
   padding: 0.8rem 1.45rem;
   box-shadow: 0 0 24px rgba(34, 231, 255, 0.45);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .btn-neon:hover {
@@ -99,10 +105,44 @@ body {
   font-weight: 700;
   padding: 0.75rem 1.3rem;
   background: rgba(8, 16, 32, 0.35);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .btn-neon-ghost:hover {
   background: rgba(34, 231, 255, 0.12);
   color: #ffffff;
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 1s ease-out both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 1s ease-out both;
 }

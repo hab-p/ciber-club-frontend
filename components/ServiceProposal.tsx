@@ -5,7 +5,7 @@ import NeonPanel from './NeonPanel';
 
 export default function ServiceProposal() {
   return (
-    <section id="propuesta-servicio" className="w-full px-4 py-3 md:px-8">
+    <section id="propuesta-servicio" className="w-full px-4 py-3 md:px-8 animate-slide-in-left">
       <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
         <NeonPanel label="Propuesta de servicio 2026">
           <iframe
