@@ -62,7 +62,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-white/5 bg-[#070614]/90 p-4 text-white backdrop-blur-md">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/#navbar" className="z-50 flex items-center gap-3 text-lg font-bold tracking-[0.14em] text-cyan-300">
+        <Link href="/#" className="z-50 flex items-center gap-3 text-lg font-bold tracking-[0.14em] text-cyan-300">
           <Image 
             src="/Ciberclub_logo.png" 
             alt="Ciber-Club Logo" 
