@@ -9,7 +9,7 @@ export default function BaseAndConditions() {
       <ScrollReveal startFrom="right" className="mx-auto max-w-6xl">
         <NeonPanel label="Bases y condiciones del sorteo">
           <iframe
-            src="https://drive.google.com/file/d/11LED8lJQxBgKJzd-bXs_isnhLfYN1HLE/preview"
+            src="https://drive.google.com/file/d/1_ZPFj_2TofNMcTmpRy5_4p-lAT4RAAyD/preview"
             className="neon-frame h-[640px]"
             title="Bases y condiciones del sorteo 22° aniversario"
           />
